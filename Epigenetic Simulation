@@ -1,0 +1,79 @@
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Childhood Experience Simulation</title>
+</head>
+<body>
+    <h1>Childhood Experiences Simulation</h1>
+    <p>Experience childhood scenarios and see how they impact your epigenome and future!</p>
+    <button onclick="startSimulation()">Start Simulation</button>
+    <div id="output"></div>
+
+    <script>
+        let EpigenomeScore = 50; // Starting Epigenome score (out of 100)
+        const scenarios = [
+            {
+                description: "Your parents argue incessantly; sometimes their arguments become violent. Throughout your early life, you witness these events. How does this experience affect your Epigenome?",
+                effect: "This experience leaves a negative signature on your epigenome. Toxic experiences can alter chemical signatures, affecting how you respond to stress as an adult.",
+                result: -15
+            },
+            {
+                description: "You are exposed to positive, loving relationships throughout your childhood. You make strong bonds with a variety of individuals. How does this experience affect your Epigenome?",
+                effect: "This experience leaves a positive signature on your epigenome, positively influencing health, skills, and resilience.",
+                result: 20
+            },
+            {
+                description: "You have an identical twin. In contrast to that twin, your parents educate you on the game of chess. You train intensely. How does this experience affect your Epigenome?",
+                effect: "This experience enhances cognitive function and critical thinking, favoring cognitive development.",
+                result: 10
+            },
+            {
+                description: "You are exposed to toxic chemicals during the fetal or infant stages of development. How does this experience affect your Epigenome?",
+                effect: "This experience increases risk for certain illnesses and changes brain architecture, reducing biological function.",
+                result: -20
+            }
+        ];
+
+        function startSimulation() {
+            EpigenomeScore = 50; // Reset Epigenome score
+            document.getElementById("output").innerHTML = "";
+            runScenarios();
+        }
+
+        function runScenarios() {
+            scenarios.forEach((scenario) => {
+                const userChoice = confirm(`${scenario.description}\n\n${scenario.effect}\n\nDo you accept this experience? (OK = Yes, Cancel = No)`);
+
+                if (userChoice) {
+                    EpigenomeScore += scenario.result;
+                    alert(`Effect applied: ${scenario.result > 0 ? "+" : ""}${scenario.result} to your Epigenome score.`);
+                } else {
+                    alert("You avoided this experience. No change to your Epigenome.");
+                }
+            });
+
+            endSimulation();
+        }
+
+        function endSimulation() {
+            let resultMessage;
+
+            if (EpigenomeScore >= 80) {
+                resultMessage = "You had a positive and fulfilling childhood. Your experiences benefitted your Epigenome and led to a productive life!";
+            } else if (EpigenomeScore >= 40) {
+                resultMessage = "You had a mixed childhood. Your experiences both benefitted and disadvantaged your Epigenome. You became productive but encountered some challenges.";
+            } else {
+                resultMessage = "You faced a hostile childhood. Your experiences disadvantaged your Epigenome and led to a dysfunctional life.";
+            }
+
+            document.getElementById("output").innerHTML = `
+                <h2>Simulation Complete!</h2>
+                <p>Your final Epigenome score: ${EpigenomeScore}</p>
+                <p>${resultMessage}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
