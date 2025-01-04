@@ -1,88 +1,91 @@
 
-</html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400&family=Nunito:wght@700&display=swap" rel="stylesheet">
-<style>
-body {
-font-family: 'Lato', Arial sans-serif;
-background-color: #8FBC8F;
-color: #FFF8DC; 
-margin: 0;
-padding: 0;
-background-size: cover;
-background-attachment: fixed;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-height: 100vh;
-margin: 0;
-}
-h1, h2 h3, h4, h5, h6 {
-font-family: 'Nunito', Verdana sans-serif;
-font-weight: 700;text-align: center;
-color: #FFF8DC;
-}
-button {
-background-color: #8FBC8F;
-color: #FFF8DC; 
-padding: 10px 20px;
-border-radius: 5px;
-cursor: pointer;
-font-size: 20px;
-transition; 0.3s;
-}
-button:hover {
-background-color: #8FBC8F;
-}
-#output {
-margin: 20px;
-padding: 10px;
-background-color: #8FBC8F;
-border: 1px solid #FFF8DC; 
-border-radius: 5px;
-}
-</style>
-</head>
     <meta charset="UTF-8">
-    <meta name="viewport" 
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Childhood Experience Simulation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400&family=Nunito:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lato', Arial, sans-serif;
+            background-color: #8FBC8F;
+            color: #FFF8DC;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Nunito', Verdana, sans-serif;
+            font-weight: 700;
+            text-align: center;
+            color: #FFF8DC;
+        }
+        button {
+            background-color: #6F8E6F;
+            color: #FFF8DC;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin: 10px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #5F7E5F;
+        }
+        #output {
+            margin: 20px;
+            padding: 15px;
+            background-color: #6F8E6F;
+            border: 1px solid #FFF8DC;
+            border-radius: 5px;
+            text-align: center;
+            max-width: 90%;
+            word-wrap: break-word;
+        }
+    </style>
 </head>
 <body>
     <h1>Childhood Experience Simulation</h1>
     <p>Experience childhood scenarios and see how they impact your epigenome and future!</p>
-    <button onclick="startSimulation()">Start Simulation</button>;
+    <button onclick="startSimulation()">Start Simulation</button>
     <div id="output"></div>
 
     <script>
         let EpigenomeScore = 50; // Starting Epigenome score (out of 100)
         const scenarios = [
             {
-                description: "Your parents argue incessantly; sometimes their arguments become violent. Throughout your early life, you witness these events. How does this experience affect your Epigenome?",
+                description: "Your parents argue incessantly; sometimes their arguments become violent. Throughout your early life, you witness these events. How does this event affect your epigenome?",
                 effect: "This experience leaves a negative signature on your epigenome. Toxic experiences can alter chemical signatures, affecting how you respond to stress as an adult.",
                 result: -15
             },
             {
-                description: "You are exposed to positive, loving relationships throughout your childhood. You make strong bonds with a variety of individuals. How does this experience affect your Epigenome?",
+                description: "You are exposed to positive, loving relationships throughout your childhood. You make strong bonds with a variety of individuals. How does this event affect your epigenome?",
                 effect: "This experience leaves a positive signature on your epigenome, positively influencing health, skills, and resilience.",
                 result: 20
             },
             {
-                description: "You have an identical twin. In contrast to that twin, your parents educate you on the game of chess. You train intensely. How does this experience affect your Epigenome?",
-                effect: "This experience leaves a positive signature on your epigenome; enhancing cognitive function and critical thinking, favoring cognitive development.",
+                description: "You have an identical twin. In contrast to that twin, your parents educate you on the game of chess. You train intensely. How does this event affect your epigenome?",
+                effect: "This experience leaves a positive signature on your epigenome, enhancing cognitive function and critical thinking.",
                 result: 10
             },
             {
-                description: "You are exposed to toxic chemicals during the fetal or infant stages of development. How does this experience affect your Epigenome?",
-                effect: "This experience leaves a negative signature on your epigenome; increasing risk for certain illnesses and changes brain architecture, reducing biological function.",
+                description: "You are exposed to toxic chemicals during the fetal or infant stages of development. How does this event affect your epigenome?",
+                effect: "This experience leaves a negative signature on your epigenome, increasing risks for certain illnesses and changing brain architecture.",
                 result: -20
             },
             {
-               description: "Your parents are morbidly obese and indulge in unhealthy way of life. As a child, you adopt this lifestyle. How does this experience affect your Epigenome?",
-               effect: "This experiece leaves a negative signature on your epigenome; as an adult, you will be more prone to obesity and distorted eating and exercise habits. 
-        ];     result: -10
+                description: "Your parents are morbidly obese, and as a child, you adopt this lifestyle. How does this event affect your epigenome?",
+                effect: "This experience leaves a negative signature on your epigenome, making you more prone to obesity and unhealthy habits as an adult.",
+                result: -10
+            }
+        ];
 
         function startSimulation() {
             EpigenomeScore = 50; // Reset Epigenome score
